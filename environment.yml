@@ -28,4 +28,6 @@ dependencies:
   - readline=8.2=h1d1bf99_2
   - tk=8.6.13=h892fb3f_2
   - tzdata=2025b=h78e105d_0
+  - pip:
+      - python-dotenv==1.1.0
 prefix: /Users/tatsuyama4723/anaconda3/envs/ai_news

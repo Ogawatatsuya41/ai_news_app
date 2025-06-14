@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI News App</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6; 
+            margin: 0; 
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .header {
+            background-color: #0056b3;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 2rem auto; 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+        .article { 
+            border-bottom: 1px solid #eee; 
+            padding: 1.5rem 0; 
+        }
+        .article:last-child { 
+            border-bottom: none; 
+        }
+        .article h2 { 
+            margin: 0 0 0.5rem 0; 
+            font-size: 1.4em; 
+        }
+        .article h2 a { 
+            text-decoration: none; 
+            color: #0056b3; 
+        }
+        .article h2 a:hover, .article h2 a:focus { 
+            text-decoration: underline;
+            color: #003d82;
+        }
+        .meta { 
+            font-size: 0.85em; 
+            color: #666; 
+            margin-top: 5px; 
+        }
+        .empty-message {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>AI News</h1>
+    </header>
+
+    <main class="container">
+        {% for article in articles %}
+            <article class="article">
+                <h2><a href="{{ article.url }}" target="_blank" rel="noopener noreferrer">{{ article.title }}</a></h2>
+                <p class="meta">
+                    {{ article.source_name }} | {{ article.published_at|date:"Y年n月j日" }}
+                </p>
+            </article>
+        {% empty %}
+            <p class="empty-message">表示するニュース記事がありません。</p>
+        {% endfor %}
+    </main>
+</body>
+</html>

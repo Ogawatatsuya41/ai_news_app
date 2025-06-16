@@ -3,9 +3,10 @@
 {% block title %}ニュース一覧 - AI News App{% endblock %}
 
 {% block content %}
-    {% for article in articles %}
+    {# ループの部分を page_obj を使うように変更 #}
+    {% for article in page_obj %}
         <article class="article">
-            <h2><a href="{{ article.url }}" target="_blank" rel="noopener noreferrer">{{ article.title }}</a></h2>
+            <h2><a href="{% url 'news:article_detail' article.pk %}">{{ article.title }}</a></h2>
             <p class="meta">
                 {{ article.source_name }} | {{ article.published_at|date:"Y年n月j日" }}
             </p>
@@ -13,4 +14,23 @@
     {% empty %}
         <p class="empty-message">表示するニュース記事がありません。</p>
     {% endfor %}
+
+    {# ここからページネーションのHTMLを追加 #}
+    <nav class="pagination" aria-label="Page navigation">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; 最初のページ</a>
+                <a href="?page={{ page_obj.previous_page_number }}">前へ</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">次へ</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">最後のページ &raquo;</a>
+            {% endif %}
+        </span>
+    </nav>
 {% endblock %}

@@ -35,12 +35,17 @@ dependencies:
       - charset-normalizer==3.4.2
       - django==5.2.2
       - idna==3.10
+      - joblib==1.5.1
+      - numpy==2.3.0
       - python-dateutil==2.9.0.post0
       - python-dotenv==1.1.0
       - requests==2.32.3
+      - scikit-learn==1.7.0
+      - scipy==1.15.3
       - six==1.17.0
       - soupsieve==2.7
       - sqlparse==0.5.3
+      - threadpoolctl==3.6.0
       - typing-extensions==4.14.0
       - urllib3==2.4.0
 prefix: /Users/tatsuyama4723/anaconda3/envs/ai_news
